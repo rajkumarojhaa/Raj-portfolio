@@ -4,20 +4,17 @@ import type React from "react"
 
 import { useState, useEffect, useRef } from "react"
 import { motion, useSpring } from "framer-motion"
-import { Moon, Sun, Menu, X } from "lucide-react"
-import { useTheme } from "next-themes"
+import { Menu, X } from "lucide-react"
 import { useMobile } from "@/hooks/use-mobile"
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home")
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const isMobile = useMobile()
   const navRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    setMounted(true)
+  
 
     const handleScroll = () => {
       const sections = ["home", "about", "projects", "experience", "education", "contact"]

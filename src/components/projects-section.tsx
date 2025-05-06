@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-
+import Image from "next/image";
 import { useRef } from "react";
 import { motion, useInView, useSpring } from "framer-motion";
 import { ExternalLink, Github, Star } from "lucide-react";
@@ -219,11 +219,14 @@ function ProjectCard({ project, index }: ProjectCardProps) {
       >
         <div className="relative h-48 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
-          <img
+          <Image
             src={project.image || "/placeholder.svg"}
             alt={project.title}
+            width={500} // Set a default width
+            height={300} // Set a default height
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             style={{ transform: "translateZ(0)" }}
+            priority={true} // Optional: preload important images
           />
 
           {project.featured && (

@@ -16,7 +16,6 @@ import {
   ChevronRight,
   Github,
   Linkedin,
-  Twitter,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useMobile } from "@/hooks/use-mobile";
@@ -27,7 +26,7 @@ export default function HeroSection() {
   const isMobile = useMobile();
   const [mounted, setMounted] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [cursorHovering, setCursorHovering] = useState(false);
+
 
   // For parallax effect on scroll
   const { scrollYProgress } = useScroll({
@@ -257,7 +256,6 @@ function SocialIcon({
 
 function HeroProfile() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const isMobile = useMobile();
 
   // For smoother animation
@@ -293,10 +291,7 @@ function HeroProfile() {
         const percentX = (e.clientX - centerX) / (rect.width / 2);
         const percentY = (e.clientY - centerY) / (rect.height / 2);
 
-        setRotation({
-          x: percentY * -10,
-          y: percentX * 10,
-        });
+        
 
         rotateX.set(percentY * -10);
         rotateY.set(percentX * 10);

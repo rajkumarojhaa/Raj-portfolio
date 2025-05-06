@@ -2,17 +2,17 @@
 
 import type React from "react"
 
-import { useRef, useState, useEffect } from "react"
+import { useRef, useState } from "react"
 import { motion, useInView, useScroll, useTransform, useSpring } from "framer-motion"
-import { Code, Palette, Zap, Layers, Globe, Cpu, ChevronRight, ExternalLink } from "lucide-react"
+import { Code, Palette, Zap, Layers, Globe, Cpu } from "lucide-react"
 import { useMobile } from "@/hooks/use-mobile"
-import { Button } from "@/components/ui/button"
+
 import Image from "next/image"
 
 export default function AboutSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(sectionRef, { once: false, amount: 0.2 })
-  const isMobile = useMobile()
+  
 
   // Scroll-based animations
   const { scrollYProgress } = useScroll({
@@ -108,7 +108,7 @@ export default function AboutSection() {
 
               <div className="space-y-4 text-gray-600 dark:text-white/80">
                 <p>
-                I'm a passionate frontend developer with 1+ years of experience creating immersive web experiences. I
+                I&apos;m a passionate frontend developer with 1+ years of experience creating immersive web experiences. I
                   specialize in building performant, accessible, and visually stunning applications using modern web
                   technologies.
                 </p>
@@ -118,7 +118,7 @@ export default function AboutSection() {
                   transform complex requirements into elegant solutions.
                 </p>
                 <p>
-                  When I'm not coding, you can find me exploring new design trends, contributing to open-source
+                  When I&apos;m not coding, you can find me exploring new design trends, contributing to open-source
                   projects, or sharing knowledge through technical articles and mentorship.
                 </p>
               </div>
@@ -151,18 +151,7 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Stats section */}
-          {/* <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6"
-          >
-            <StatCard number={1} label="Years Experience" color="blue" />
-            <StatCard number={30} label="Projects Completed" color="purple" />
-            <StatCard number={20} label="Happy Clients" color="pink" />
-            <StatCard number={10} label="Open Source Contributions" color="cyan" />
-          </motion.div> */}
+          
         </motion.div>
       </div>
     </section>
@@ -441,63 +430,6 @@ function SkillCard({ skill, index, isInView }: SkillCardProps) {
   )
 }
 
-interface StatCardProps {
-  number: number
-  label: string
-  color: string
-}
 
-function StatCard({ number, label, color }: StatCardProps) {
-  const [count, setCount] = useState(0)
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: false, amount: 0.5 })
 
-  // Get color classes based on color
-  const getColorClasses = (color: string) => {
-    const colorMap: Record<string, { bg: string; text: string }> = {
-      blue: { bg: "from-blue-500/20 to-blue-600/20", text: "text-blue-500 dark:text-blue-300" },
-      purple: { bg: "from-purple-500/20 to-purple-600/20", text: "text-purple-500 dark:text-purple-300" },
-      pink: { bg: "from-pink-500/20 to-pink-600/20", text: "text-pink-500 dark:text-pink-300" },
-      cyan: { bg: "from-cyan-500/20 to-cyan-600/20", text: "text-cyan-500 dark:text-cyan-300" },
-    }
 
-    return colorMap[color] || colorMap.blue
-  }
-
-  const colorClasses = getColorClasses(color)
-
-  useEffect(() => {
-    if (isInView) {
-      let start = 0
-      const end = number
-      const duration = 2000
-      const increment = end / (duration / 16)
-
-      const timer = setInterval(() => {
-        start += increment
-        if (start > end) {
-          setCount(end)
-          clearInterval(timer)
-        } else {
-          setCount(Math.floor(start))
-        }
-      }, 16)
-
-      return () => clearInterval(timer)
-    }
-  }, [isInView, number])
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.5 }}
-      className="p-6 rounded-xl backdrop-blur-md bg-white/10 dark:bg-white/5 border border-white/20 shadow-lg text-center"
-    >
-      <div className={`text-4xl font-bold mb-2 ${colorClasses.text}`}>{count}+</div>
-      <div className="text-gray-600 dark:text-white/70 text-sm">{label}</div>
-      <div className={`w-12 h-1 mx-auto mt-3 rounded-full bg-gradient-to-r ${colorClasses.bg}`} />
-    </motion.div>
-  )
-}

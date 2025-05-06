@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useRef, useState } from "react"
 import { motion, useInView, useSpring } from "framer-motion"
-import { Github, Linkedin, Mail, Send, Twitter } from "lucide-react"
+import { Github, Linkedin, Mail, Send, } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -140,7 +140,7 @@ function ContactInfoCard() {
         Contact Information
       </h3>
       <p className="text-gray-600 dark:text-white/70 mb-6" style={{ transform: "translateZ(15px)" }}>
-        Feel free to reach out if you're looking for a developer, have a question, or just want to connect.
+        Feel free to reach out if  you&#39;re looking for a developer, have a question, or just want to connect.
       </p>
 
       <div className="space-y-4" style={{ transform: "translateZ(10px)" }}>
@@ -155,7 +155,7 @@ function ContactInfoCard() {
         <div className="flex space-x-4 pt-4">
           <SocialIcon icon={<Github className="h-5 w-5" />} href="https://github.com/rajkumarojhaa" />
           <SocialIcon icon={<Linkedin className="h-5 w-5" />} href="https://www.linkedin.com/in/rajkumar-ojha-390070216/" />
-          {/* <SocialIcon icon={<Twitter className="h-5 w-5" />} href="#" /> */}
+          
         </div>
       </div>
 

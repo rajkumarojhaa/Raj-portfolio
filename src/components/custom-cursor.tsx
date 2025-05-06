@@ -1,15 +1,13 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import { motion, useSpring } from "framer-motion"
 import { useMobile } from "@/hooks/use-mobile"
 
 export default function CustomCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isHovering, setIsHovering] = useState(false)
   const isMobile = useMobile()
 
-  // For smoother cursor movement
   const springConfig = { stiffness: 500, damping: 28, mass: 0.5 }
   const cursorX = useSpring(0, springConfig)
   const cursorY = useSpring(0, springConfig)
@@ -20,7 +18,6 @@ export default function CustomCursor() {
     if (isMobile) return
 
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
       cursorX.set(e.clientX)
       cursorY.set(e.clientY)
       trailX.set(e.clientX)
@@ -28,11 +25,12 @@ export default function CustomCursor() {
     }
 
     const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement
       if (
-        (e.target as HTMLElement).tagName === "A" ||
-        (e.target as HTMLElement).tagName === "BUTTON" ||
-        (e.target as HTMLElement).closest("a") ||
-        (e.target as HTMLElement).closest("button")
+        target.tagName === "A" ||
+        target.tagName === "BUTTON" ||
+        target.closest("a") ||
+        target.closest("button")
       ) {
         setIsHovering(true)
       } else {
