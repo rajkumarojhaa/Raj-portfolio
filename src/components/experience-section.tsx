@@ -45,7 +45,7 @@ export default function ExperienceSection() {
     },
     {
       company: "Techsimplus",
-      position: "Fullstack Developer Intern",
+      position: "Fullstack Developer",
       period: "July 2024 - December 2024",
       location: "Bhopal",
       description:
