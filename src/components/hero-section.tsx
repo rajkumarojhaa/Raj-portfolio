@@ -160,7 +160,7 @@ export default function HeroSection() {
               size="lg"
               className="group relative overflow-hidden border-gray-300 dark:border-white/20 text-gray-700 dark:text-white hover:text-gray-900 dark:hover:text-white hover:border-gray-400 dark:hover:border-white/40 transition-all duration-300"
             >
-              <a href="/My New Resume.pdf" download>
+              <a href="/Raj_Resume.pdf" download>
                 <span className="relative z-10 flex items-center">
                   <Download className="mr-2 h-4 w-4" />
                   Download Resume
